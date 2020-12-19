@@ -1,9 +1,6 @@
 name: Build and publish API client to branch 
 
-on:
-  push:
-    tags:
-      - 'v*'
+on: push
 
 jobs:
   build_and_publish:
@@ -30,7 +27,7 @@ jobs:
         uses: s0/git-publish-subdir-action@develop
         env:
           REPO: self
-          BRANCH: ${GITHUB_REF#refs/tags/}
+          BRANCH: api
           FOLDER: api
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE: "Auto generated NephroLog API client"
