@@ -30,7 +30,7 @@ jobs:
         uses: s0/git-publish-subdir-action@develop
         env:
           REPO: self
-          BRANCH: ${{ github.event.release.tag_name }}
+          BRANCH: ${GITHUB_REF#refs/tags/}
           FOLDER: api
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE: "Auto generated NephroLog API client"
