@@ -1,14 +1,13 @@
-name: Deploy to production
-on: push
+name: Build and publish API client to branch 
 
-#on:
-#  push:
-#    tags:
-#      - 'v*'
+on:
+  push:
+    tags:
+      - 'v*'
 
 jobs:
-  deploy:
-    name: Deploy to production
+  build_and_publish:
+    name: Build and publish API client to branch
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@master
@@ -27,10 +26,12 @@ jobs:
 
       - run: flutter pub run build_runner build --delete-conflicting-outputs
 
-      - name: Push generated client to separate branch
+      - name: Push generated client to branch
         uses: s0/git-publish-subdir-action@develop
         env:
           REPO: self
-          BRANCH: dist
+          BRANCH: ${{ github.event.release.tag_name }}
           FOLDER: api
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MESSAGE: "Auto generated NephroLog API client"
+
