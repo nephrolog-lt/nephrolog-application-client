@@ -28,7 +28,7 @@ jobs:
       - run: npm install @openapitools/openapi-generator-cli -g
 
       - name: Generate API client and contracts
-        run: openapi-generator generate -i swagger.json -g dart-dio -o api --additional-properties="pubDescription=Nephrolog application client for communicating with API,pubAuthor=Karolis Vycius,pubName=nephrolog_api_client,dateLibrary=timemachine,useEnumExtension=true"
+        run: npx @openapitools/openapi-generator-cli generate -i swagger.json -g dart-dio -o api --additional-properties="pubDescription=Nephrolog application client for communicating with API,pubAuthor=Karolis Vycius,pubName=nephrolog_api_client,dateLibrary=timemachine,useEnumExtension=true"
 
       - name: Push generated client to branch
         uses: s0/git-publish-subdir-action@develop
