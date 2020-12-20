@@ -22,6 +22,8 @@ jobs:
         with:
           node-version: '14'
 
+      - run: npm install @openapitools/openapi-generator-cli -g
+
       - name: Generate API client and contracts
         run: npx -y @openapitools/openapi-generator-cli generate -i https://api.nephrolog.lt/swagger/v1/swagger.json -g dart-dio -o api --additional-properties="pubAuthor=Karolis,pubName=nephrolog_api_client,dateLibrary=timemachine,useEnumExtension=true"
 
