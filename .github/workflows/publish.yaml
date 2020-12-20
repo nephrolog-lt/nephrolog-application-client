@@ -27,6 +27,19 @@ jobs:
       - name: Generate API client and contracts
         run: java -jar openapi-generator-cli.jar generate -i https://api.nephrolog.lt/swagger/v1/swagger.json -g dart-dio -o api --additional-properties="pubAuthor=Karolis,pubName=nephrolog_api_client,dateLibrary=timemachine,useEnumExtension=true"
 
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+
+      - run: dart --version
+      - run: flutter --version
+
+      - run: flutter pub get
+        working-directory: api
+
+      - run: flutter pub run build_runner build --delete-conflicting-outputs
+        working-directory: api
+
       - name: Push generated client to branch
         uses: s0/git-publish-subdir-action@develop
         env:
