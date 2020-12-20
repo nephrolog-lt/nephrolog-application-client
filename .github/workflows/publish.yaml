@@ -1,4 +1,4 @@
-name: Build and publish API client to branch 
+name: Build and publish API client to branch
 
 on: push
 
@@ -12,16 +12,21 @@ jobs:
       - name: Get newest Nephrolog Open Api contract
         run: wget -O swagger.json https://api.nephrolog.lt/swagger/v1/swagger.json
 
-      - uses: subosito/flutter-action@v1
+      - name: Set env
+          run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Test
+        run: |
+          echo $RELEASE_VERSION
+          echo ${{ env.RELEASE_VERSION }}
+
+      - uses: actions/setup-node@v2
         with:
-          channel: 'stable'
+          node-version: '14'
 
-      - run: dart --version
-      - run: flutter --version
+      - run: npm install @openapitools/openapi-generator-cli
 
-      - run: flutter pub get
-
-      - run: flutter pub run build_runner build --delete-conflicting-outputs
+      - name: Generate API client and contracts
+        run: openapi-generator generate -i swagger.json -g dart-dio -o api --additional-properties="pubDescription=Nephrolog application client for communicating with API,pubAuthor=Karolis Vycius,pubName=nephrolog_api_client,dateLibrary=timemachine,useEnumExtension=true"
 
       - name: Push generated client to branch
         uses: s0/git-publish-subdir-action@develop
