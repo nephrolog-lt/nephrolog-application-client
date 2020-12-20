@@ -12,9 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - name: Get newest Nephrolog Open Api contract
-        run: wget -O swagger.json https://api.nephrolog.lt/swagger/v1/swagger.json
-
       - name: Set env from tag
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
@@ -25,10 +22,8 @@ jobs:
         with:
           node-version: '14'
 
-      - run: npm install @openapitools/openapi-generator-cli -g
-
       - name: Generate API client and contracts
-        run: npx @openapitools/openapi-generator-cli generate -i swagger.json -g dart-dio -o api --additional-properties="pubDescription=Nephrolog application client for communicating with API,pubAuthor=Karolis Vycius,pubName=nephrolog_api_client,dateLibrary=timemachine,useEnumExtension=true"
+        run: npx -y @openapitools/openapi-generator-cli generate -i https://api.nephrolog.lt/swagger/v1/swagger.json -g dart-dio -o api --additional-properties="pubAuthor=Karolis,pubName=nephrolog_api_client,dateLibrary=timemachine,useEnumExtension=true"
 
       - name: Push generated client to branch
         uses: s0/git-publish-subdir-action@develop
