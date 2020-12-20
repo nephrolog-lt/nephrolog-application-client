@@ -1,6 +1,9 @@
 name: Build and publish API client to branch
 
-on: push
+on:
+  push:
+    tags:
+      - v*
 
 jobs:
   build_and_publish:
@@ -12,19 +15,17 @@ jobs:
       - name: Get newest Nephrolog Open Api contract
         run: wget -O swagger.json https://api.nephrolog.lt/swagger/v1/swagger.json
 
-      - name: Set env
+      - name: Set env from tag
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
-      - name: Test
-        run: |
-          echo $RELEASE_VERSION
-          echo ${{ env.RELEASE_VERSION }}
+      - name: Version
+        run: echo ${{ env.RELEASE_VERSION }}
 
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
 
-      - run: npm install @openapitools/openapi-generator-cli
+      - run: npm install @openapitools/openapi-generator-cli -g
 
       - name: Generate API client and contracts
         run: openapi-generator generate -i swagger.json -g dart-dio -o api --additional-properties="pubDescription=Nephrolog application client for communicating with API,pubAuthor=Karolis Vycius,pubName=nephrolog_api_client,dateLibrary=timemachine,useEnumExtension=true"
@@ -33,7 +34,7 @@ jobs:
         uses: s0/git-publish-subdir-action@develop
         env:
           REPO: self
-          BRANCH: api
+          BRANCH: ${{ env.RELEASE_VERSION }}
           FOLDER: api
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE: "Auto generated NephroLog API client"
