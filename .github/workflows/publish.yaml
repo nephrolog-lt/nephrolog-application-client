@@ -22,7 +22,7 @@ jobs:
         with:
           java-version: 8
 
-      - run: wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/4.3.1/openapi-generator-cli-4.3.1.jar -O openapi-generator-cli.jar
+      - run: wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/5.0.0/openapi-generator-cli-5.0.0.jar -O openapi-generator-cli.jar
 
       - name: Generate API client and contracts
         run: java -jar openapi-generator-cli.jar generate -i https://api.nephrolog.lt/swagger/v1/swagger.json -g dart2 -o api --additional-properties="pubAuthor=Karolis,pubName=nephrolog_api_client,useEnumExtension=true"
