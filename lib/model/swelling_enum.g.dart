@@ -1,0 +1,120 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'swelling_enum.dart';
+
+// **************************************************************************
+// BuiltValueGenerator
+// **************************************************************************
+
+const SwellingEnum _$unknown = const SwellingEnum._('unknown');
+const SwellingEnum _$eyes = const SwellingEnum._('eyes');
+const SwellingEnum _$wholeFace = const SwellingEnum._('wholeFace');
+const SwellingEnum _$handBreadth = const SwellingEnum._('handBreadth');
+const SwellingEnum _$hands = const SwellingEnum._('hands');
+const SwellingEnum _$belly = const SwellingEnum._('belly');
+const SwellingEnum _$knees = const SwellingEnum._('knees');
+const SwellingEnum _$foot = const SwellingEnum._('foot');
+const SwellingEnum _$wholeLeg = const SwellingEnum._('wholeLeg');
+
+SwellingEnum _$valueOf(String name) {
+  switch (name) {
+    case 'unknown':
+      return _$unknown;
+    case 'eyes':
+      return _$eyes;
+    case 'wholeFace':
+      return _$wholeFace;
+    case 'handBreadth':
+      return _$handBreadth;
+    case 'hands':
+      return _$hands;
+    case 'belly':
+      return _$belly;
+    case 'knees':
+      return _$knees;
+    case 'foot':
+      return _$foot;
+    case 'wholeLeg':
+      return _$wholeLeg;
+    default:
+      throw new ArgumentError(name);
+  }
+}
+
+final BuiltSet<SwellingEnum> _$values =
+    new BuiltSet<SwellingEnum>(const <SwellingEnum>[
+  _$unknown,
+  _$eyes,
+  _$wholeFace,
+  _$handBreadth,
+  _$hands,
+  _$belly,
+  _$knees,
+  _$foot,
+  _$wholeLeg,
+]);
+
+class _$SwellingEnumMeta {
+  const _$SwellingEnumMeta();
+  SwellingEnum get unknown => _$unknown;
+  SwellingEnum get eyes => _$eyes;
+  SwellingEnum get wholeFace => _$wholeFace;
+  SwellingEnum get handBreadth => _$handBreadth;
+  SwellingEnum get hands => _$hands;
+  SwellingEnum get belly => _$belly;
+  SwellingEnum get knees => _$knees;
+  SwellingEnum get foot => _$foot;
+  SwellingEnum get wholeLeg => _$wholeLeg;
+  SwellingEnum valueOf(String name) => _$valueOf(name);
+  BuiltSet<SwellingEnum> get values => _$values;
+}
+
+abstract class _$SwellingEnumMixin {
+  // ignore: non_constant_identifier_names
+  _$SwellingEnumMeta get SwellingEnum => const _$SwellingEnumMeta();
+}
+
+Serializer<SwellingEnum> _$swellingEnumSerializer =
+    new _$SwellingEnumSerializer();
+
+class _$SwellingEnumSerializer implements PrimitiveSerializer<SwellingEnum> {
+  static const Map<String, Object> _toWire = const <String, Object>{
+    'unknown': 'Unknown',
+    'eyes': 'Eyes',
+    'wholeFace': 'WholeFace',
+    'handBreadth': 'HandBreadth',
+    'hands': 'Hands',
+    'belly': 'Belly',
+    'knees': 'Knees',
+    'foot': 'Foot',
+    'wholeLeg': 'WholeLeg',
+  };
+  static const Map<Object, String> _fromWire = const <Object, String>{
+    'Unknown': 'unknown',
+    'Eyes': 'eyes',
+    'WholeFace': 'wholeFace',
+    'HandBreadth': 'handBreadth',
+    'Hands': 'hands',
+    'Belly': 'belly',
+    'Knees': 'knees',
+    'Foot': 'foot',
+    'WholeLeg': 'wholeLeg',
+  };
+
+  @override
+  final Iterable<Type> types = const <Type>[SwellingEnum];
+  @override
+  final String wireName = 'SwellingEnum';
+
+  @override
+  Object serialize(Serializers serializers, SwellingEnum object,
+          {FullType specifiedType = FullType.unspecified}) =>
+      _toWire[object.name] ?? object.name;
+
+  @override
+  SwellingEnum deserialize(Serializers serializers, Object serialized,
+          {FullType specifiedType = FullType.unspecified}) =>
+      SwellingEnum.valueOf(_fromWire[serialized] ?? serialized as String);
+}
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
