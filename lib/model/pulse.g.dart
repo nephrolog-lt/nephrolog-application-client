@@ -1,0 +1,170 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// @dart=2.6
+
+part of 'pulse.dart';
+
+// **************************************************************************
+// BuiltValueGenerator
+// **************************************************************************
+
+Serializer<Pulse> _$pulseSerializer = new _$PulseSerializer();
+
+class _$PulseSerializer implements StructuredSerializer<Pulse> {
+  @override
+  final Iterable<Type> types = const [Pulse, _$Pulse];
+  @override
+  final String wireName = 'Pulse';
+
+  @override
+  Iterable<Object> serialize(Serializers serializers, Pulse object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(int)),
+      'pulse',
+      serializers.serialize(object.pulse, specifiedType: const FullType(int)),
+      'measured_at',
+      serializers.serialize(object.measuredAt,
+          specifiedType: const FullType(OffsetDateTime)),
+    ];
+
+    return result;
+  }
+
+  @override
+  Pulse deserialize(Serializers serializers, Iterable<Object> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new PulseBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'pulse':
+          result.pulse = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'measured_at':
+          result.measuredAt = serializers.deserialize(value,
+              specifiedType: const FullType(OffsetDateTime)) as OffsetDateTime;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$Pulse extends Pulse {
+  @override
+  final int id;
+  @override
+  final int pulse;
+  @override
+  final OffsetDateTime measuredAt;
+
+  factory _$Pulse([void Function(PulseBuilder) updates]) =>
+      (new PulseBuilder()..update(updates)).build();
+
+  _$Pulse._({this.id, this.pulse, this.measuredAt}) : super._() {
+    if (id == null) {
+      throw new BuiltValueNullFieldError('Pulse', 'id');
+    }
+    if (pulse == null) {
+      throw new BuiltValueNullFieldError('Pulse', 'pulse');
+    }
+    if (measuredAt == null) {
+      throw new BuiltValueNullFieldError('Pulse', 'measuredAt');
+    }
+  }
+
+  @override
+  Pulse rebuild(void Function(PulseBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  PulseBuilder toBuilder() => new PulseBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is Pulse &&
+        id == other.id &&
+        pulse == other.pulse &&
+        measuredAt == other.measuredAt;
+  }
+
+  @override
+  int get hashCode {
+    return $jf(
+        $jc($jc($jc(0, id.hashCode), pulse.hashCode), measuredAt.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('Pulse')
+          ..add('id', id)
+          ..add('pulse', pulse)
+          ..add('measuredAt', measuredAt))
+        .toString();
+  }
+}
+
+class PulseBuilder implements Builder<Pulse, PulseBuilder> {
+  _$Pulse _$v;
+
+  int _id;
+  int get id => _$this._id;
+  set id(int id) => _$this._id = id;
+
+  int _pulse;
+  int get pulse => _$this._pulse;
+  set pulse(int pulse) => _$this._pulse = pulse;
+
+  OffsetDateTime _measuredAt;
+  OffsetDateTime get measuredAt => _$this._measuredAt;
+  set measuredAt(OffsetDateTime measuredAt) => _$this._measuredAt = measuredAt;
+
+  PulseBuilder() {
+    Pulse._initializeBuilder(this);
+  }
+
+  PulseBuilder get _$this {
+    if (_$v != null) {
+      _id = _$v.id;
+      _pulse = _$v.pulse;
+      _measuredAt = _$v.measuredAt;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(Pulse other) {
+    if (other == null) {
+      throw new ArgumentError.notNull('other');
+    }
+    _$v = other as _$Pulse;
+  }
+
+  @override
+  void update(void Function(PulseBuilder) updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$Pulse build() {
+    final _$result =
+        _$v ?? new _$Pulse._(id: id, pulse: pulse, measuredAt: measuredAt);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
