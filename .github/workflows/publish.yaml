@@ -26,7 +26,7 @@ jobs:
       - run: wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/5.1.0/openapi-generator-cli-5.1.0.jar -O openapi-generator-cli.jar
 
       - name: Generate API client and contracts
-        run: java -jar openapi-generator-cli.jar generate -i https://api.nephrogo.com/v1/schema.json/ -g dart-dio-next -o api --additional-properties="pubAuthor=Karolis,pubName=nephrogo_api_client,disallowAdditionalPropertiesIfNotPresent=false,nullableFields=false,useEnumExtension=true"
+        run: java -jar openapi-generator-cli.jar generate -i https://api.nephrogo.com/v1/schema.json/ -g dart-dio-next -o api --additional-properties="pubAuthor=Karolis,pubName=nephrogo_api_client,disallowAdditionalPropertiesIfNotPresent=false,useEnumExtension=false"
 
       - uses: subosito/flutter-action@v1
         with:
